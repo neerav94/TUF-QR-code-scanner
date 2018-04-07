@@ -1,16 +1,22 @@
 <ion-header>
 
   <ion-navbar color="secondary">
-    <ion-title>Bar Code Scanner</ion-title>
+    <ion-title>Token Validator</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding class="no-scroll container-class">
-  <input type="text" placeholder="Enter text" class="text">
+  <div>
+    <div class="input-container">
+      <input id="qrInput" type="text" placeholder="Enter text" class="text" [(ngModel)]="qrInput">   
+    </div>
+    <div class="text seperator">OR</div>
+    <button ion-button class="scan-button" round (click)="openScanner()">Scan</button>
+  </div> 
 
-  <div class="text seperator">OR</div>
-
-  <button ion-button round (click)="openScanner()">Scan</button>
+  <div>
+    <button ion-button class="submit-button" round (click)="showData()">Submit</button>
+  </div>
 </ion-content>

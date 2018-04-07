@@ -8,9 +8,7 @@ import { BarCodeScannerPage } from '../bar-code-scanner/bar-code-scanner';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
-  }
+  constructor(public navCtrl: NavController) {}
 
   showScannerPage() {
     this.navCtrl.push(BarCodeScannerPage);

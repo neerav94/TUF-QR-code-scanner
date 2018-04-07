@@ -72,13 +72,28 @@ $colors: (
 );
 
 .background {
-  background-image: linear-gradient(rgba(0,0,0, .7), rgba(0,0,0,.7)), url('/assets/imgs/homePage.jpg');
+  background-image: linear-gradient(rgba(0,0,0, .7), rgba(0,0,0,.7)), url('assets/imgs/homePage.jpg');
   background-size: 100% 100%;
 }
 
 .no-scroll .scroll-content{
     overflow: hidden;
 }
+
+$loading-ios-background: transparent;
+$loading-md-background: $loading-ios-background;
+$loading-wp-background: $loading-ios-background;
+$loading-md-box-shadow: none;
+
+$loading-ios-text-color: #fff;
+$loading-md-text-color: $loading-ios-text-color;
+$loading-wp-text-color: $loading-ios-text-color;
+
+
+$loading-ios-spinner-color: #fff;
+$loading-ios-spinner-ios-color: $loading-ios-spinner-color;
+$loading-md-spinner-ios-color: $loading-ios-spinner-color;
+$loading-wp-spinner-color : $loading-ios-spinner-color;
 
 // App iOS Variables
 // --------------------------------------------------
