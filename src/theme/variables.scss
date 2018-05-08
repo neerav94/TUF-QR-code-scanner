@@ -14,36 +14,6 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
-@font-face {
-  font-family: panton;
-  src: url(panton.otf);
-}
-
-@font-face {
-  font-family: affogato;
-  src: url(affogato.otf);
-}
-
-.main-title {
-  font-family: panton;
-  font-size: 6em;
-  letter-spacing: 5px;
-  color: #fff;
-}
-
-.sub-title {
-  font-family: affogato;
-  font-size: 2em;
-  letter-spacing: 1.55px;
-  color: #fff;
-}
-
-.text {
-  font-family: affogato;
-  font-size: 1.25em;
-  letter-spacing: 1.55px;
-  color: #fff;
-}
 
 // Shared Variables
 // --------------------------------------------------
@@ -71,10 +41,10 @@ $colors: (
   dark:       #222
 );
 
-.background {
-  background-image: linear-gradient(rgba(0,0,0, .7), rgba(0,0,0,.7)), url('assets/imgs/homePage.jpg');
-  background-size: 100% 100%;
-}
+// .background {
+//   background-color: #0e1625;
+//   background-size: 100% 100%;
+// }
 
 .no-scroll .scroll-content{
     overflow: hidden;
