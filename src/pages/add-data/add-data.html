@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Add Token</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="no-scroll container-class">
+  <input id="nameInput" type="text" placeholder="Enter name" class="input-container-new" [(ngModel)]="nameInput">
+  <input id="tokenInput" type="text" placeholder="Enter token id" class="input-container-new" [(ngModel)]="tokenInput">
+
+  <button ion-button class="add-button" round (click)="submitToken()">Add Token</button>
+
+  <div *ngIf="statusFlag" class="data">Data Successfully added.</div>
+</ion-content>

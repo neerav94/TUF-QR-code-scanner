@@ -21,4 +21,11 @@ export class QrcodeService {
         return this.http.put('https://thehackers.azurewebsites.net/update-status?tokenId='+tokenId, {headers: headers})
         .map(res => res.json());
     }
+
+    addNewToken(data) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('https://thehackers.azurewebsites.net/load-data', data,  {headers: headers})
+        .map(res => res.json());
+    }
 }

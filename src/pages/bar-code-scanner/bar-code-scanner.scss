@@ -12,7 +12,7 @@ input {
     background: transparent;
     outline: none;
     border: none;
-    width: 100px;
+    // width: 100px;
 }
 
 ion-icon {
@@ -43,4 +43,21 @@ ion-icon {
     margin-top: 16px;
     padding: 16px;
     width: 80px;
+}
+
+.name {
+    color: white;
+    font-size: 18px;
+}
+
+.beneficiary {
+    color: white;
+    font-size: 20px;
+    padding: 16px;
+}
+
+.message {
+    color: #fff;
+    font-size: 15px;
+    padding-top: 8px;
 }

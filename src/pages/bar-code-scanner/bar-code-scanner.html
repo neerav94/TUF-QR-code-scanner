@@ -17,6 +17,22 @@
   </div> 
 
   <div>
-    <button ion-button class="submit-button" round (click)="showData()">Submit</button>
+    <button ion-button class="submit-button" round (click)="showData()">Search</button>
   </div>
+
+  <div *ngIf="successFlag">
+    <div class="beneficiary">Beneficiary Found</div>
+    <div class="name">Name: {{beneficiaryName}}</div>
+    <div class="name">Token: {{tokenId}}</div>
+  </div>
+
+  <div *ngIf="notFoundFlag">
+    <div class="beneficiary">Beneficiary Not Found</div>
+  </div>
+
+  <button *ngIf="successFlag" ion-button class="submit-button" round (click)="submitStatus()">Submit</button>
+  <div *ngIf="messageFlag">
+    <div class="message">{{resMessage}}</div>
+  </div>
+
 </ion-content>

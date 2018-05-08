@@ -12,8 +12,15 @@ import { QrcodeService } from '../../services/qrcode.service';
 export class BarCodeScannerPage implements OnInit {
 
   qrInput: string = ""
-  tokenData: object = null
+  tokenData: Array<Object> = null
   flag: boolean = false;
+  beneficiaryName: string = ""
+  resMessage: string = "";
+  tokenId: string = "";
+
+  successFlag:boolean = false;
+  notFoundFlag: boolean = false;
+  messageFlag: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner, public alertCtrl: AlertController, private qrcodeService: QrcodeService, private loadingCtrl: LoadingController) {}
 
@@ -42,12 +49,16 @@ export class BarCodeScannerPage implements OnInit {
   }
 
   getUserInfo(qrInput) {
-    let id: string = "";
     let name: string = "";
+    this.successFlag = false;
+    this.notFoundFlag = false;
+    this.messageFlag = false;
+    this.flag = false;
     for(var index in this.tokenData) {
       if(this.tokenData[index]["tokenId"] == qrInput) {
         this.flag = true;
-        id = this.tokenData[index]["tokenId"]
+        this.tokenId = this.tokenData[index]["tokenId"]
+        console.log(this.tokenId)
         name = this.tokenData[index]["name"]
         break;
       } else {
@@ -56,58 +67,38 @@ export class BarCodeScannerPage implements OnInit {
     }
 
     if(this.flag) {
-      let confirm = this.alertCtrl.create({
-        title: 'Collector Info',
-        message: 'Name: ' + name,
-        buttons: [
-          {
-            text: 'Confirm',
-            handler: () => {
-              let loadingPopup = this.loadingCtrl.create({
-                content: 'Loading data...'
-              });
-              loadingPopup.present();
-              this.qrcodeService.setStatus(id).subscribe(response => {
-                if(response.status == 200) {
-                  let alert = this.alertCtrl.create({
-                    title: 'Success',
-                    subTitle: 'Please give the item to the collector.',
-                    buttons: ['OK']
-                  });
-                  alert.present();
-                }
-              },
-              error => {
-                if(error.status == 406) {
-                  let alert = this.alertCtrl.create({
-                    title: 'Error',
-                    subTitle: 'This person has already collected the item.',
-                    buttons: ['OK']
-                  });
-                  alert.present();
-                }
-                if(error.status == 404) {
-                  let alert = this.alertCtrl.create({
-                    title: 'Error',
-                    subTitle: 'This token does not exist.',
-                    buttons: ['OK']
-                  });
-                  alert.present();
-                }
-                loadingPopup.dismiss();
-              })
-            }
-          }
-        ]
-      });
-      confirm.present();
+      this.beneficiaryName = name;
+      this.successFlag = true;
+      this.notFoundFlag = false;
     } else {
-      let alert = this.alertCtrl.create({
-        title: 'Error',
-        subTitle: 'This token does not exist',
-        buttons: ['OK']
-      });
-      alert.present();
+      this.notFoundFlag = true;
+      this.successFlag = false;
     }
+    this.qrInput = ""
+  }
+
+  submitStatus() {
+    let loadingPopup = this.loadingCtrl.create({
+      content: 'Loading data...'
+    });
+    loadingPopup.present();
+    console.log(this.tokenId)
+    this.qrcodeService.setStatus(this.tokenId).subscribe(response => {
+      if(response.status) {
+        this.resMessage = response.message;
+        this.messageFlag = true;
+      }
+      loadingPopup.dismiss();
+    },
+    error => {
+      if(error.status === 406) {
+        this.resMessage = "Token already tagged";
+        this.messageFlag = true;
+      } else {
+        this.resMessage = "Error";
+        this.messageFlag = true;
+      }
+      loadingPopup.dismiss();
+    })
   }
 }

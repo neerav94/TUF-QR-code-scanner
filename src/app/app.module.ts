@@ -9,6 +9,8 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BarCodeScannerPage } from '../pages/bar-code-scanner/bar-code-scanner';
+import { AddDataPage } from '../pages/add-data/add-data';
+import { ViewDataPage } from '../pages/view-data/view-data';
 
 import { QrcodeService } from '../services/qrcode.service';
 
@@ -16,7 +18,9 @@ import { QrcodeService } from '../services/qrcode.service';
   declarations: [
     MyApp,
     HomePage,
-    BarCodeScannerPage
+    BarCodeScannerPage,
+    AddDataPage,
+    ViewDataPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { QrcodeService } from '../services/qrcode.service';
   entryComponents: [
     MyApp,
     HomePage,
-    BarCodeScannerPage
+    BarCodeScannerPage,
+    AddDataPage,
+    ViewDataPage
   ],
   providers: [
     StatusBar,

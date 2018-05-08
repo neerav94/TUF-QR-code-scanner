@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>View Data</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="container-class">
+  <table>
+      <tr>
+        <th>Name</th>
+        <th>Token</th>
+      </tr>
+    <tbody *ngFor="let item of tokenData">
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.tokenId}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>
